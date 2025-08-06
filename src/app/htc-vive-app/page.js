@@ -3,278 +3,224 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Download, Eye, Monitor, Headphones, Gamepad2, Zap, Users, Settings } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Users, Monitor, MessageSquare, Layers3 } from 'lucide-react';
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
+  initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: "easeOut" }
-};
-
-const staggerChildren = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
 };
 
 export default function HTCViveAppPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <Monitor className="w-8 h-8 text-green-400" />
-              <Badge variant="outline" className="border-green-500 text-green-400 px-4 py-2">
-                VR Application
-              </Badge>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              HTC Vive App
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Immerse yourself in the ultimate VR data visualization experience. Navigate through 
-              complex datasets in room-scale virtual reality with precision tracking and intuitive controls.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
-                <Download className="w-5 h-5 mr-2" />
-                Download VR App
-              </Button>
-              <Button size="lg" variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800">
-                <Eye className="w-5 h-5 mr-2" />
-                Watch Demo
-              </Button>
-            </div>
-          </motion.div>
-
-          {/* Key Features */}
-          <motion.div
-            variants={staggerChildren}
-            initial="initial"
-            animate="animate"
-            className="grid md:grid-cols-3 gap-8 mb-16"
-          >
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-green-500/20 h-full">
-                <CardHeader>
-                  <Gamepad2 className="w-12 h-12 text-green-400 mb-4" />
-                  <CardTitle className="text-white">Room-Scale Interaction</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    Walk around your data, reach out and manipulate visualizations naturally
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+      <section className="relative h-screen flex items-center px-6 pt-32">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div {...fadeInUp}>
+              <div className="flex items-center gap-4 mb-6">
+                <img
+                  src="/flow/htc.webp"
+                  alt="HTC Vive Logo"
+                  className="h-16 w-auto object-contain"
+                />
+                <Badge variant="outline" className="border-green-500 text-green-400 px-4 py-2 bg-green-500/10">
+                  Partnership
+                </Badge>
+              </div>
+              
+              <h1 className="text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+                Flow for <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">VIVE XR Elite</span>
+              </h1>
+              
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                Go beyond 2D images in the conference room with immersive data using the VIVE XR Elite. Collaborate seamlessly with colleagues and make informed, data-driven decisions remotely or in person, floating visualizations above the conference room table.
+              </p>
+              
+              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                All meeting participants become engaged in the experience, transforming how you understand and utilize your data.
+              </p>
+              
+              <Link href="/demo">
+                <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
+                  <MessageSquare className="w-5 h-5 mr-2" />
+                  Experience Flow on Vive
+                </Button>
+              </Link>
             </motion.div>
 
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-emerald-500/20 h-full">
-                <CardHeader>
-                  <Zap className="w-12 h-12 text-emerald-400 mb-4" />
-                  <CardTitle className="text-white">High-Performance Rendering</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    Optimized for 90fps with support for millions of data points
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+            <motion.div
+              {...fadeInUp}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="relative"
+            >
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl shadow-green-500/20 bg-slate-800">
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src="https://player.vimeo.com/video/1036876773?autoplay=1&loop=1&muted=1&background=1"
+                  frameBorder="0" 
+                  allowFullScreen
+                  allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                  className="w-full h-full"
+                />
+              </div>
             </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-teal-500/20 h-full">
-                <CardHeader>
-                  <Users className="w-12 h-12 text-teal-400 mb-4" />
-                  <CardTitle className="text-white">Multi-User Collaboration</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    Connect multiple VR headsets for shared data exploration sessions
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* System Requirements */}
-      <section className="py-20 px-6 bg-slate-900/20">
+      {/* Features Section */}
+      <section className="py-20 px-6 bg-slate-900/30">
         <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              System Requirements
+              Transform Your Conference Room Experience
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Ensure your system meets these requirements for the optimal VR experience
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              Experience the power of immersive data visualization with VIVE XR Elite's cutting-edge mixed reality technology.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={staggerChildren} initial="initial" animate="animate" className="grid md:grid-cols-2 gap-8">
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-green-500/20">
-                <CardHeader>
-                  <CardTitle className="text-white flex items-center">
-                    <Settings className="w-5 h-5 mr-2 text-green-400" />
-                    Minimum Requirements
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">CPU:</span>
-                    <span className="text-white">Intel i5-4590 / AMD FX 8350</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">GPU:</span>
-                    <span className="text-white">NVIDIA GTX 1060 / AMD RX 480</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">RAM:</span>
-                    <span className="text-white">8GB DDR4</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">USB:</span>
-                    <span className="text-white">3x USB 3.0, 1x USB 2.0</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">OS:</span>
-                    <span className="text-white">Windows 10</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-slate-900/50 border-green-500/20 h-full">
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <CardTitle className="text-white text-xl">Immersive Collaboration</CardTitle>
+                <CardDescription className="text-gray-400">
+                  Float visualizations above conference tables and engage all meeting participants in shared data experiences
+                </CardDescription>
+              </CardHeader>
+            </Card>
 
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-emerald-500/20">
-                <CardHeader>
-                  <CardTitle className="text-white flex items-center">
-                    <Zap className="w-5 h-5 mr-2 text-emerald-400" />
-                    Recommended Specs
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">CPU:</span>
-                    <span className="text-white">Intel i7-8700K / AMD Ryzen 7</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">GPU:</span>
-                    <span className="text-white">NVIDIA RTX 3070 / AMD RX 6700 XT</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">RAM:</span>
-                    <span className="text-white">16GB+ DDR4</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Storage:</span>
-                    <span className="text-white">SSD with 10GB+ free space</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Play Area:</span>
-                    <span className="text-white">2m x 1.5m minimum</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </motion.div>
+            <Card className="bg-slate-900/50 border-emerald-500/20 h-full">
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Monitor className="w-8 h-8 text-white" />
+                </div>
+                <CardTitle className="text-white text-xl">Beyond 2D Limitations</CardTitle>
+                <CardDescription className="text-gray-400">
+                  Break free from flat screens and explore your data in three-dimensional space with natural interactions
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="bg-slate-900/50 border-teal-500/20 h-full">
+              <CardHeader className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-teal-600 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Layers3 className="w-8 h-8 text-white" />
+                </div>
+                <CardTitle className="text-white text-xl">Hybrid Meetings</CardTitle>
+                <CardDescription className="text-gray-400">
+                  Seamlessly blend remote and in-person participants in shared mixed reality data environments
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
         </div>
       </section>
 
-      {/* VR Features */}
+      {/* Technical Specs */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              VR-Optimized Features
+              Powered by VIVE XR Elite
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Experience data visualization like never before with these VR-specific capabilities
+            <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+              Experience Flow's advanced data visualization capabilities with the precision and comfort of VIVE's enterprise-grade mixed reality headset.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={staggerChildren} initial="initial" animate="animate" className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-green-500/20 text-center h-full">
-                <CardContent className="pt-6">
-                  <Headphones className="w-12 h-12 text-green-400 mx-auto mb-4" />
-                  <h3 className="text-white font-semibold mb-2">Spatial Audio</h3>
-                  <p className="text-gray-400 text-sm">
-                    3D positioned audio cues for data points and interactions
-                  </p>
-                </CardContent>
-              </Card>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">Enterprise-Ready Features</h3>
+              <ul className="space-y-4">
+                {[
+                  "High-resolution 4K displays for crystal-clear data visualization",
+                  "Precise inside-out tracking for natural interaction",
+                  "Comfortable design for extended collaboration sessions", 
+                  "Seamless wireless connectivity",
+                  "Professional-grade build quality"
+                ].map((feature, index) => (
+                  <motion.li 
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center text-gray-300"
+                  >
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-4"></div>
+                    {feature}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+            
+            <motion.div 
+              whileHover={{ scale: 1.02 }}
+              className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 rounded-2xl p-8 border border-green-500/20"
+            >
+              <div className="text-center">
+                <img
+                  src="/flow/htc.webp"
+                  alt="HTC Vive XR Elite"
+                  className="w-32 h-auto mx-auto mb-6 filter brightness-110"
+                />
+                <h4 className="text-xl font-bold text-white mb-2">VIVE XR Elite</h4>
+                <p className="text-gray-400">
+                  The ultimate mixed reality headset for enterprise data visualization and collaboration
+                </p>
+              </div>
             </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-emerald-500/20 text-center h-full">
-                <CardContent className="pt-6">
-                  <Gamepad2 className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
-                  <h3 className="text-white font-semibold mb-2">Hand Tracking</h3>
-                  <p className="text-gray-400 text-sm">
-                    Natural hand gestures for intuitive data manipulation
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-teal-500/20 text-center h-full">
-                <CardContent className="pt-6">
-                  <Monitor className="w-12 h-12 text-teal-400 mx-auto mb-4" />
-                  <h3 className="text-white font-semibold mb-2">Mirror Display</h3>
-                  <p className="text-gray-400 text-sm">
-                    Share your VR view on external displays for presentations
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-900/50 border-cyan-500/20 text-center h-full">
-                <CardContent className="pt-6">
-                  <Settings className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-                  <h3 className="text-white font-semibold mb-2">Comfort Settings</h3>
-                  <p className="text-gray-400 text-sm">
-                    Customizable comfort options to reduce motion sickness
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Download Section */}
-      <section className="py-20 px-6 bg-slate-900/20">
+      {/* CTA Section */}
+      <section className="py-20 px-6 bg-gradient-to-r from-green-900/20 to-emerald-900/20">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div {...fadeInUp}>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Step Into Your Data
-            </h2>
-            <p className="text-gray-400 text-lg mb-8">
-              Download the HTC Vive app and experience the future of data visualization in virtual reality.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
-                <Download className="w-5 h-5 mr-2" />
-                Download from Steam
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Transform Your Data Meetings?
+          </h2>
+          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+            Experience the future of data collaboration with Flow on VIVE XR Elite. 
+            Schedule a demonstration and see how immersive visualization can revolutionize your decision-making process.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Link href="/demo">
+              <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-lg px-8 py-4">
+                <MessageSquare className="w-5 h-5 mr-2" />
+                Schedule Demo
               </Button>
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
-                <Download className="w-5 h-5 mr-2" />
-                Download from Viveport
+            </Link>
+            <a href="https://a.flow.gl/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="lg" className="border-2 border-green-400 text-green-400 px-8 py-4 text-lg hover:bg-green-400 hover:text-white transition-all">
+                Try Live Demo
               </Button>
-            </div>
-            <Link href="/" className="inline-flex items-center text-green-400 hover:text-green-300">
+            </a>
+          </div>
+          
+          <div>
+            <Link href="/" className="inline-flex items-center text-green-400 hover:text-green-300 transition-colors">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

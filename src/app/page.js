@@ -37,6 +37,58 @@ const glowOnHover = {
 export default function Home() {
   const { user, isAdmin, signOut } = useAuth();
   const [showAdminMenu, setShowAdminMenu] = useState(false);
+  const [activeIndustry, setActiveIndustry] = useState("Financial");
+
+  const industryContent = {
+    "Financial": {
+      title: "Stock Portfolio Analysis",
+      description: "As an example, Flow turns portfolio analysis into an interactive, spatial experience, helping teams and clients see investment insights clearly and collaboratively.",
+      features: [
+        "Immersive 3D visualizations",
+        "Multiuser Collaboration", 
+        "AI-Enhanced Data Interaction"
+      ],
+      cta: "Explore Stock Portfolio Analysis",
+      videoId: "U_QEzKYrTEM",
+      link: "https://a.flow.gl/flow/m3eo4iay/display"
+    },
+    "Environmental": {
+      title: "Temperature Anomalies",
+      description: "As a demonstration, Flow's temperature anomalies story visualizes shifts in global climate over time, helping audiences intuitively see patterns, trends, and emerging risks in a spatial timeline.",
+      features: [
+        "Time-based Spatial Visualization",
+        "Highlight Regional Variations",
+        "Interactive Exporation"
+      ],
+      cta: "Explore Temperature Anomalies",
+      videoId: "iSgyh5MmADg",
+      link: "https://a.flow.gl/flow/7mp5g1/display"
+    },
+    "Energy": {
+      title: "Texas 2021 Power Outage",
+      description: "As an illustration, Flow's Texas Power Outage story shows how infrastructure failures cascaded across the Texas energy grid, helping users connect causes, impacts, and recovery efforts spatially over time.",
+      features: [
+        "Visualize System Interdependencies",
+        "Event Timeline Navigation",
+        "Layered Data Views"
+      ],
+      cta: "Explore Texas 2021 Power Outage",
+      videoId: "QiKqRAxLz4o",
+      link: "https://a.flow.gl/flow/yuqa8d/display"
+    },
+    "Operational": {
+      title: "Sales Analysis",
+      description: "Use Flow to move beyond summarized charts and uncover the critical transactions that shape financial years, enabling better strategic decisions through detailed spatial visualization.",
+      features: [
+        "Concrete Data Insights",
+        "Critical Details Become Visible in 3D",
+        "Actionable Geographic Analysis"
+      ],
+      cta: "Explore Sales Analysis",
+      videoId: "Oswr8ZHjjw0",
+      link: "https://a.flow.gl/flow/example-operational/display"
+    }
+  };
 
   const handleSignOut = async (e) => {
     e.preventDefault();
@@ -93,8 +145,15 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto text-center">
+      <section className="px-6 relative h-screen">
+        <div className="absolute inset-0 opacity-20">
+          <img
+            src="/flow/big-globe.png"
+            alt="Globe Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="max-w-6xl mx-auto text-center relative z-10 flex flex-col justify-center h-screen">
           <motion.h1 
             {...fadeInUp}
             className="text-6xl md:text-8xl font-bold text-white mb-8 leading-tight"
@@ -178,8 +237,15 @@ export default function Home() {
       </section>
 
       {/* AI-Powered Insights */}
-      <section className="py-20 px-6 bg-slate-900/30">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 px-6 bg-slate-900/30 relative">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="/flow/graph.png"
+            alt="Graph Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div 
             {...fadeInUp}
             className="text-center mb-16"
@@ -240,9 +306,15 @@ export default function Home() {
               variants={fadeInUp}
               whileHover={scaleOnHover}
             >
-              <Card className="bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border-blue-500/20 h-80">
-                <CardContent className="p-8 h-full flex items-center justify-center">
-                  <p className="text-white text-center">AI Insights Visualization</p>
+              <Card className="bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border-blue-500/20 h-96">
+                <CardContent className="p-4 h-full">
+                  <div className="w-full h-full rounded-xl overflow-hidden">
+                    <img
+                      src="/flow/ai.gif"
+                      alt="AI-Driven Insights Visualization"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -251,8 +323,15 @@ export default function Home() {
       </section>
 
       {/* Communicate */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 px-6 relative">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="/flow/heirarchy.png"
+            alt="Hierarchy Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div 
             variants={staggerContainer}
             initial="initial"
@@ -264,9 +343,20 @@ export default function Home() {
               variants={fadeInUp}
               whileHover={scaleOnHover}
             >
-              <Card className="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 border-cyan-500/20 h-80">
-                <CardContent className="p-8 h-full flex items-center justify-center">
-                  <p className="text-white text-center">3D Data Stories Visualization</p>
+              <Card className="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 border-cyan-500/20 h-[28rem]">
+                <CardContent className="p-2 h-full">
+                  <div className="aspect-video w-full h-full rounded-xl overflow-hidden">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/a0Nhsm1dH24"
+                      title="Flow Immersive Communication Demo"
+                      style={{ border: 0 }}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="w-full h-full"
+                    ></iframe>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -309,8 +399,15 @@ export default function Home() {
       </section>
 
       {/* Collaborate */}
-      <section className="py-20 px-6 bg-slate-900/30">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 px-6 bg-slate-900/30 relative">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="/flow/globe.png"
+            alt="Globe Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div 
             variants={staggerContainer}
             initial="initial"
@@ -356,9 +453,15 @@ export default function Home() {
               variants={fadeInUp}
               whileHover={scaleOnHover}
             >
-              <Card className="bg-gradient-to-br from-emerald-900/30 to-blue-900/30 border-emerald-500/20 h-80">
-                <CardContent className="p-8 h-full flex items-center justify-center">
-                  <p className="text-white text-center">Collaboration Workspace</p>
+              <Card className="bg-gradient-to-br from-emerald-900/30 to-blue-900/30 border-emerald-500/20 h-96">
+                <CardContent className="p-4 h-full">
+                  <div className="w-full h-full rounded-xl overflow-hidden">
+                    <img
+                      src="/flow/collaboration.gif"
+                      alt="Flow Collaboration Workspace"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -437,8 +540,15 @@ export default function Home() {
       </section>
 
       {/* View Anywhere */}
-      <section className="py-20 px-6 bg-slate-900/30">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 px-6 bg-slate-900/30 relative">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="/flow/cone-graph.png"
+            alt="Cone Graph Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div 
             {...fadeInUp}
             className="text-center mb-16"
@@ -483,9 +593,23 @@ export default function Home() {
                   <CardContent className="p-8">
                     <motion.div 
                       whileHover={scaleOnHover}
-                      className={`bg-gradient-to-br ${platform.gradient} rounded-xl p-8 mb-6 h-48 flex items-center justify-center`}
+                      className={`bg-gradient-to-br ${platform.gradient} rounded-xl mb-6 h-48 flex items-center justify-center overflow-hidden`}
                     >
-                      <p className="text-white">{platform.title} Visualization</p>
+                      {platform.title === "AR Glasses" ? (
+                        <img
+                          src="/flow/ar-glasses.png"
+                          alt="AR Glasses"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : platform.title === "Web Browser" ? (
+                        <img
+                          src="/flow/in-browser.png"
+                          alt="Web Browser"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <p className="text-white">{platform.title} Visualization</p>
+                      )}
                     </motion.div>
                     <h3 className="text-2xl font-bold text-white mb-4">{platform.title}</h3>
                     <p className="text-gray-300">
@@ -524,7 +648,14 @@ export default function Home() {
           >
             {["Financial", "Environmental", "Energy", "Operational"].map((industry, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className="bg-slate-800/50 border-blue-500/20 text-center group hover:border-blue-400/40 transition-colors">
+                <Card 
+                  className={`bg-slate-800/50 text-center group transition-colors cursor-pointer ${
+                    activeIndustry === industry 
+                      ? "border-blue-400/60 bg-blue-900/30" 
+                      : "border-blue-500/20 hover:border-blue-400/40"
+                  }`}
+                  onClick={() => setActiveIndustry(industry)}
+                >
                   <CardContent className="p-6">
                     <h3 className="text-lg font-semibold text-white">{industry}</h3>
                   </CardContent>
@@ -533,25 +664,22 @@ export default function Home() {
             ))}
           </motion.div>
 
-          {/* Stock Portfolio Analysis Example */}
+          {/* Dynamic Industry Content */}
           <motion.div 
             {...fadeInUp}
             whileHover={glowOnHover}
+            key={activeIndustry}
           >
             <Card className="bg-slate-800/50 border-blue-500/20">
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
-                    <h3 className="text-3xl font-bold text-white mb-6">Stock Portfolio Analysis</h3>
+                    <h3 className="text-3xl font-bold text-white mb-6">{industryContent[activeIndustry].title}</h3>
                     <p className="text-lg text-gray-300 mb-8">
-                      As an example, Flow turns portfolio analysis into an interactive, spatial experience, helping teams and clients see investment insights clearly and collaboratively.
+                      {industryContent[activeIndustry].description}
                     </p>
                     <ul className="space-y-4 mb-8">
-                      {[
-                        "Immersive 3D visualizations",
-                        "Multiuser Collaboration", 
-                        "AI-Enhanced Data Interaction"
-                      ].map((feature, index) => (
+                      {industryContent[activeIndustry].features.map((feature, index) => (
                         <motion.li 
                           key={index}
                           initial={{ opacity: 0, x: -20 }}
@@ -564,15 +692,28 @@ export default function Home() {
                         </motion.li>
                       ))}
                     </ul>
-                    <Button variant="ghost" className="text-blue-400 hover:text-blue-300 p-0">
-                      Explore Stock Portfolio Analysis <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
+                    <a href={industryContent[activeIndustry].link} target="_blank" rel="noopener noreferrer">
+                      <Button variant="ghost" className="text-blue-400 hover:text-blue-300 p-0">
+                        {industryContent[activeIndustry].cta} <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </a>
                   </div>
                   <motion.div 
                     whileHover={scaleOnHover}
-                    className="bg-gradient-to-br from-blue-900/30 to-indigo-900/30 rounded-2xl p-8 h-80 flex items-center justify-center border border-blue-500/20"
+                    className="bg-gradient-to-br from-blue-900/30 to-indigo-900/30 rounded-2xl p-2 h-96 border border-blue-500/20 overflow-hidden"
                   >
-                    <p className="text-white text-center">Stock Portfolio 3D Visualization</p>
+                    <div className="w-full h-full rounded-xl overflow-hidden">
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src={`https://www.youtube.com/embed/${industryContent[activeIndustry].videoId}`}
+                        title={industryContent[activeIndustry].title}
+                        style={{ border: 0 }}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="w-full h-full"
+                      ></iframe>
+                    </div>
                   </motion.div>
                 </div>
               </CardContent>

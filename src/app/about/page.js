@@ -53,25 +53,25 @@ const AboutPage = () => {
     {
       name: "Meta",
       description: "Collaborating to deliver high-value, multi-user AR experiences on Meta Quest devices for enterprise customers.",
-      logo: "/images/partners/meta-logo.png", // Placeholder path
+      logo: "/flow/meta.jpg",
       color: "from-blue-600 to-blue-800"
     },
     {
       name: "Qualcomm",
       description: "Partnering on cutting-edge AR processing and mobile platform integration.",
-      logo: "/images/partners/qualcomm-logo.png", // Placeholder path
+      logo: "/flow/qualcomm.png",
       color: "from-red-600 to-red-800"
     },
     {
       name: "HTC",
       description: "Delivering immersive VR experiences through HTC's enterprise-grade hardware solutions.",
-      logo: "/images/partners/htc-logo.png", // Placeholder path
+      logo: "/flow/htc.webp",
       color: "from-green-600 to-green-800"
     },
     {
       name: "Magic Leap",
       description: "Creating next-generation spatial computing experiences with Magic Leap's AR platform.",
-      logo: "/images/partners/magicleap-logo.png", // Placeholder path
+      logo: "/flow/magic-leap.jpg",
       color: "from-purple-600 to-purple-800"
     }
   ];
@@ -82,8 +82,8 @@ const AboutPage = () => {
 
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6">
+        <section className="h-screen flex items-center">
+          <div className="max-w-7xl mx-auto px-6 w-full">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -133,17 +133,12 @@ const AboutPage = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="relative"
               >
-                <div className="aspect-video bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-2xl border border-blue-500/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Lightbulb className="w-12 h-12 text-blue-400" />
-                    </div>
-                    <p className="text-gray-400 text-sm">
-                      [Iron Man 3D Projection Image Placeholder]
-                      <br />
-                      Tony Stark manipulating holographic data
-                    </p>
-                  </div>
+                <div className="aspect-video bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-2xl border border-blue-500/20 overflow-hidden">
+                  <img
+                    src="/flow/ironman.gif"
+                    alt="Iron Man holographic data manipulation"
+                    className="w-full h-[160%] object-cover object-center -translate-y-[15%]"
+                  />
                 </div>
               </motion.div>
             </div>
@@ -160,8 +155,12 @@ const AboutPage = () => {
             >
               <Card className="bg-slate-900/50 border-blue-500/20 max-w-4xl mx-auto">
                 <CardHeader className="text-center pb-8">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <Users className="w-16 h-16 text-white" />
+                  <div className="w-64 h-64 rounded-full mx-auto mb-6 overflow-hidden border-2 border-blue-500/20">
+                    <img
+                      src="/flow/Jason_Marsh_CEO.webp"
+                      alt="Jason Marsh, Founder & CEO"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <CardTitle className="text-3xl text-white mb-2">Jason Marsh</CardTitle>
                   <CardDescription className="text-blue-400 text-lg">Founder & CEO</CardDescription>
@@ -249,10 +248,12 @@ const AboutPage = () => {
                 >
                   <Card className="bg-slate-900/50 border-blue-500/20 hover:border-blue-400/40 transition-colors h-full group">
                     <CardHeader className="text-center">
-                      <div className={`w-20 h-20 bg-gradient-to-br ${partner.color} rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                        <div className="text-white font-bold text-lg">
-                          {partner.name.charAt(0)}
-                        </div>
+                      <div className={`w-32 h-32 bg-gradient-to-br ${partner.color} rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform overflow-hidden`}>
+                        <img
+                          src={partner.logo}
+                          alt={`${partner.name} logo`}
+                          className="w-full h-full object-cover filter brightness-110"
+                        />
                       </div>
                       <CardTitle className="text-white text-xl">{partner.name}</CardTitle>
                     </CardHeader>
