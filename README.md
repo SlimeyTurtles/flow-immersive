@@ -70,18 +70,11 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+![demo gif](https://github.com/SlimeyTurtles/flow-immersive/blob/main/demo.gif?raw=true)
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I made a completely different project for codepath final that was a stateful game website, but I didn't realize the final had to be a blog -- someone told me we just needed to make a crud app -- so I backpeddled to submitting this instead. I made this for my internship at a startup.
 
 ## License
 
