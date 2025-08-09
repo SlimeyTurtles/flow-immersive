@@ -280,10 +280,8 @@ const DemoPage = () => {
                       <div className="text-sm text-gray-300">
                         <p className="font-medium text-white mb-1">What happens next?</p>
                         <ul className="space-y-1 text-gray-400">
-                          <li>• We'll review your request within 24 hours</li>
                           <li>• Our team will reach out to schedule your demo</li>
                           <li>• We'll customize the demonstration to your specific use case</li>
-                          <li>• Demos typically last 30-45 minutes</li>
                         </ul>
                       </div>
                     </div>

@@ -207,9 +207,9 @@ export default function QuestPage() {
                 </Button>
               </a>
               <Link href="/demo">
-                <Button variant="outline" size="lg" className="border-2 border-blue-400 text-blue-400 px-8 py-4 text-lg hover:bg-blue-400 hover:text-white transition-all">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-10 py-4 text-lg font-bold shadow-xl hover:scale-105 hover:shadow-cyan-500/25 ring-2 ring-cyan-400/30 transition-all duration-300">
                   <MessageSquare className="w-5 h-5 mr-2" />
-                  Schedule Demo
+                  📅 Schedule Demo
                 </Button>
               </Link>
             </div>

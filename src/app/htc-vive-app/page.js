@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import CTASection from '@/components/CTASection';
 import { ArrowLeft, Users, Monitor, MessageSquare, Layers3 } from 'lucide-react';
 
 const fadeInUp = {
@@ -187,37 +188,22 @@ export default function HTCViveAppPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-green-900/20 to-emerald-900/20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Data Meetings?
-          </h2>
-          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Experience the future of data collaboration with Flow on VIVE XR Elite. 
-            Schedule a demonstration and see how immersive visualization can revolutionize your decision-making process.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Link href="/demo">
-              <Button size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-lg px-8 py-4">
-                <MessageSquare className="w-5 h-5 mr-2" />
-                Schedule Demo
-              </Button>
-            </Link>
-            <a href="https://a.flow.gl/" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg" className="border-2 border-green-400 text-green-400 px-8 py-4 text-lg hover:bg-green-400 hover:text-white transition-all">
-                Try Live Demo
-              </Button>
-            </a>
-          </div>
-          
-          <div>
-            <Link href="/" className="inline-flex items-center text-green-400 hover:text-green-300 transition-colors">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Link>
-          </div>
-        </div>
+      <CTASection 
+        title="Ready to Transform Your Data Meetings?"
+        subtitle="Experience the future of data collaboration with Flow on VIVE XR Elite. Schedule a demonstration and see how immersive visualization can revolutionize your decision-making process."
+        backgroundImage="/flow/big-globe.png"
+      />
+      
+      <section className="py-8 text-center">
+        <a href="https://a.flow.gl/" target="_blank" rel="noopener noreferrer" className="mr-4">
+          <Button variant="outline" size="lg" className="border-2 border-green-400 text-green-400 px-8 py-4 text-lg hover:bg-green-400 hover:text-white transition-all">
+            Try Live Demo
+          </Button>
+        </a>
+        <Link href="/" className="inline-flex items-center text-green-400 hover:text-green-300 transition-colors ml-4">
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Home
+        </Link>
       </section>
 
       <Footer />

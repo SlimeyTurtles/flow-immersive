@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import CTASection from '@/components/CTASection';
 import { ArrowLeft, Users, Monitor, MessageSquare, Layers3 } from 'lucide-react';
 
 const fadeInUp = {
@@ -127,30 +128,17 @@ export default function ARDataRoomPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-blue-900/20 to-cyan-900/20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Meetings?
-          </h2>
-          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Join the companies already revolutionizing their data collaboration with the AR Data Room. 
-            Experience the future of work today.
-          </p>
-          
-          <Link href="/demo">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-lg px-8 py-4 mb-8">
-              <MessageSquare className="w-5 h-5 mr-2" />
-              Reach out to learn more
-            </Button>
-          </Link>
-          
-          <div>
-            <Link href="/" className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Link>
-          </div>
-        </div>
+      <CTASection 
+        title="Ready to Transform Your Meetings?"
+        subtitle="Join the companies already revolutionizing their data collaboration with the AR Data Room. Experience the future of work today."
+        backgroundImage="/flow/big-globe.png"
+      />
+      
+      <section className="py-8 text-center">
+        <Link href="/" className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Home
+        </Link>
       </section>
     </div>
   );

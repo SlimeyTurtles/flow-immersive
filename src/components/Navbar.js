@@ -14,8 +14,22 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-white">
-            Flow <span className="text-blue-400">Immersive</span>
+          <Link href="/" className="flex items-center space-x-2">
+            <div className="relative">
+              {/* Flow logo */}
+              <img 
+                src="/flow-logo-400x180.png" 
+                alt="Flow Logo" 
+                className="h-8 w-auto"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'block';
+                }}
+              />
+              <div className="text-2xl font-bold text-white hidden">
+                Flow <span className="text-blue-400">Immersive</span>
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -67,9 +81,6 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            <Link href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
-              Help
-            </Link>
             <div className="flex items-center space-x-3">
               <a 
                 href="https://a.flow.gl/" 
@@ -80,8 +91,8 @@ const Navbar = () => {
                 Live Demo
               </a>
               <Link href="/demo">
-                <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white">
-                  Schedule Demo
+                <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-2.5 text-sm font-bold shadow-xl hover:scale-105 hover:shadow-cyan-500/25 ring-2 ring-cyan-400/30 transition-all duration-300">
+                  📅 Schedule Demo
                 </Button>
               </Link>
             </div>
@@ -147,13 +158,6 @@ const Navbar = () => {
                   </Link>
                 </div>
               </div>
-              <Link 
-                href="#" 
-                className="text-gray-300 hover:text-blue-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Help
-              </Link>
               <a 
                 href="https://a.flow.gl/" 
                 target="_blank" 
@@ -164,8 +168,8 @@ const Navbar = () => {
                 Live Demo
               </a>
               <Link href="/demo" onClick={() => setIsMenuOpen(false)}>
-                <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white w-full">
-                  Schedule Demo
+                <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white w-full px-6 py-3 font-bold shadow-xl hover:scale-105 hover:shadow-cyan-500/25 ring-2 ring-cyan-400/30 transition-all duration-300">
+                  📅 Schedule Demo
                 </Button>
               </Link>
             </div>

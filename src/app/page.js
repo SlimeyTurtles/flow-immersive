@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useAuth } from "@/contexts/AuthContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CTASection from "@/components/CTASection";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, ArrowRight, Database, Eye, Users, Zap, LogIn, LogOut, Settings } from "lucide-react";
@@ -32,6 +33,121 @@ const scaleOnHover = {
 const glowOnHover = {
   boxShadow: "0 0 15px rgba(59, 130, 246, 0.3)",
   transition: { duration: 0.4, ease: "easeOut" }
+};
+
+// Hero Carousel Component
+const HeroCarousel = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      type: "gif",
+      src: "/flow/ai.gif",
+      alt: "AI Explains Itself - Interactive Data Analysis",
+      fallback: "/flow/ai.gif",
+      title: "AI Explains Itself"
+    },
+    {
+      type: "gif",
+      src: "/flow/ar_data_visualization.gif",
+      alt: "AR Data Visualization in Action",
+      fallback: "/flow/ar-glasses.png",
+      title: "AR Data Visualization"
+    },
+    {
+      type: "gif", 
+      src: "/flow/collaboration.gif",
+      alt: "Team Collaboration in AR",
+      fallback: "/flow/collaboration.gif",
+      title: "Multi-User Collaboration"
+    },
+    {
+      type: "image",
+      src: "/flow/in-browser.png",
+      alt: "Web Browser Interface", 
+      fallback: "/flow/in-browser.png",
+      title: "Works in Any Browser"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 15000); // Change slide every 15 seconds
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  return (
+    <div className="relative w-full h-72 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-500/20">
+      {slides.map((slide, index) => (
+        <motion.div
+          key={index}
+          className="absolute inset-0"
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ 
+            opacity: currentSlide === index ? 1 : 0,
+            scale: currentSlide === index ? 1 : 1.1
+          }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
+          <img
+            src={slide.src}
+            alt={slide.alt}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.src = slide.fallback;
+            }}
+          />
+          {/* Overlay with title */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+            <motion.h3 
+              className="text-white font-semibold text-lg"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              {slide.title}
+            </motion.h3>
+          </div>
+        </motion.div>
+      ))}
+      
+      {/* Slide indicators */}
+      <div className="absolute bottom-4 right-4 flex space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              currentSlide === index 
+                ? 'bg-blue-400 w-6' 
+                : 'bg-white/50 hover:bg-white/75'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Navigation arrows */}
+      <button
+        onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-2 rounded-full transition-all duration-300"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button
+        onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-2 rounded-full transition-all duration-300"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  );
 };
 
 export default function Home() {
@@ -145,55 +261,69 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="px-6 relative h-screen">
-        <div className="absolute inset-0 opacity-20">
+      <section className="px-6 relative min-h-screen">
+        <div className="absolute inset-0 opacity-10">
           <img
             src="/flow/big-globe.png"
             alt="Globe Background"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="max-w-6xl mx-auto text-center relative z-10 flex flex-col justify-center h-screen">
-          <motion.h1 
-            {...fadeInUp}
-            className="text-6xl md:text-8xl font-bold text-white mb-8 leading-tight"
-          >
-            Critical Data Driven <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400">
-              Decisions
-            </span>
-          </motion.h1>
-          <motion.p 
-            {...fadeInUp}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-          >
-            Flow transforms complex data into shared visualizations, revealing patterns, risks, and opportunities for improved decision making.
-          </motion.p>
-          <motion.div 
-            {...fadeInUp}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-col md:flex-row gap-6 justify-center items-center"
-          >
-            <Link href="/demo">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-6 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 hover:shadow-xl"
+        <div className="max-w-7xl mx-auto relative z-10 flex items-center min-h-screen py-20">
+          <div className="grid lg:grid-cols-7 gap-12 items-center w-full">
+            {/* Left Column - Text Content */}
+            <div className="text-left lg:col-span-3">
+              <motion.h1 
+                {...fadeInUp}
+                className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
               >
-                Request Demo
-              </Button>
-            </Link>
-            <a href="https://a.flow.gl/" target="_blank" rel="noopener noreferrer">
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-emerald-400 text-emerald-400 px-8 py-6 rounded-full text-lg font-semibold hover:bg-emerald-400 hover:text-white transition-all"
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400">
+                  See your data clearly
+                </span>
+              </motion.h1>
+              <motion.p 
+                {...fadeInUp}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
               >
-                <Play className="w-5 h-5 mr-2" />
-                Live Demo
-              </Button>
-            </a>
-          </motion.div>
+                Transform complex data into immersive 3D visualizations. Make better decisions with your team using AR smart glasses or any web browser.
+              </motion.p>
+              <motion.div 
+                {...fadeInUp}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 mb-8"
+              >
+                <Link href="/demo">
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/25 ring-2 ring-cyan-400/30 w-full sm:w-auto"
+                  >
+                    📅 Schedule Demo
+                  </Button>
+                </Link>
+                <a href="https://a.flow.gl/" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    size="lg"
+                    className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 hover:shadow-xl w-full sm:w-auto"
+                  >
+                    <Play className="w-5 h-5 mr-2" />
+                    Try Live Demo
+                  </Button>
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right Column - Carousel */}
+            <div className="relative lg:col-span-4">
+              <motion.div
+                {...fadeInUp}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="relative"
+              >
+                <HeroCarousel />
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -477,7 +607,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-5xl font-bold text-white mb-6">
-              How Flow <span className="text-blue-400">Immersive</span> Works
+              How <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400">Flow Immersive</span> Works
             </h2>
           </motion.div>
           
@@ -494,28 +624,32 @@ export default function Home() {
                 title: "Data Integration",
                 description: "Upload CSV or connect your existing data sources securely to Flow Immersive with data push integration.",
                 gradient: "from-blue-600 to-cyan-600",
-                icon: Database
+                iconImage: "/flow/icons/data-integration.svg",
+                iconFallback: Database
               },
               {
                 step: "2", 
                 title: "Arrange Data",
                 description: "Design your presentation and define narrative steps using the no-code Flow Editor.",
                 gradient: "from-cyan-600 to-indigo-600",
-                icon: Eye
+                iconImage: "/flow/icons/arrange-data.svg",
+                iconFallback: Eye
               },
               {
                 step: "3",
                 title: "XR Visualization", 
                 description: "Optimized for XR devices and web browsers, experience your data in a whole new light.",
                 gradient: "from-indigo-600 to-purple-600",
-                icon: Zap
+                iconImage: "/flow/icons/xr-visualization.svg",
+                iconFallback: Zap
               },
               {
                 step: "4",
                 title: "Collaborate",
                 description: "Invite team members to join shared AR sessions to analyze scenarios and make decisions together.",
                 gradient: "from-purple-600 to-pink-600",
-                icon: Users
+                iconImage: "/flow/icons/collaborate.svg",
+                iconFallback: Users
               }
             ].map((item, index) => (
               <motion.div key={index} variants={fadeInUp}>
@@ -525,7 +659,16 @@ export default function Home() {
                       whileHover={scaleOnHover}
                       className={`bg-gradient-to-br ${item.gradient} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6`}
                     >
-                      <item.icon className="w-8 h-8 text-white" />
+                      <img
+                        src={item.iconImage}
+                        alt={`${item.title} icon`}
+                        className="w-8 h-8 text-white"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextElementSibling.style.display = 'block';
+                        }}
+                      />
+                      <item.iconFallback className="w-8 h-8 text-white hidden" />
                     </motion.div>
                     <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
                     <p className="text-gray-300 text-sm leading-relaxed">
@@ -644,22 +787,20 @@ export default function Home() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-4 gap-6 mb-12"
+            className="flex flex-wrap justify-center gap-3 mb-12 bg-slate-900/50 backdrop-blur-sm rounded-2xl p-4 border border-blue-500/20 max-w-fit mx-auto"
           >
             {["Financial", "Environmental", "Energy", "Operational"].map((industry, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card 
-                  className={`bg-slate-800/50 text-center group transition-colors cursor-pointer ${
-                    activeIndustry === industry 
-                      ? "border-blue-400/60 bg-blue-900/30" 
-                      : "border-blue-500/20 hover:border-blue-400/40"
-                  }`}
+                <button
                   onClick={() => setActiveIndustry(industry)}
+                  className={`px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer hover:scale-105 shadow-lg border ${
+                    activeIndustry === industry 
+                      ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-cyan-500/25 ring-2 ring-cyan-400/40 border-cyan-400" 
+                      : "bg-slate-700 text-gray-300 hover:bg-slate-600 hover:text-white hover:shadow-blue-500/20 border-slate-600 hover:border-slate-500"
+                  }`}
                 >
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-white">{industry}</h3>
-                  </CardContent>
-                </Card>
+                  {industry}
+                </button>
               </motion.div>
             ))}
           </motion.div>
@@ -723,25 +864,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-blue-900/50 to-indigo-900/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div {...fadeInUp}>
-            <h2 className="text-5xl font-bold text-white mb-6">
-              Ready to Transform Your <br />
-              <span className="text-blue-400">Decision-Making Process?</span>
-            </h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
-              Join leading organizations that are using Flow Immersive to make critical decisions with unrivaled clarity.
-            </p>
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-12 py-6 rounded-full text-xl font-semibold shadow-lg transform transition-all duration-200 hover:scale-105"
-            >
-              Get Started Today
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+      <CTASection />
 
       {/* Footer */}
       <Footer />

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import CTASection from '@/components/CTASection';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -82,8 +83,18 @@ const AboutPage = () => {
 
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="h-screen flex items-center">
-          <div className="max-w-7xl mx-auto px-6 w-full">
+        <section className="h-screen flex items-center relative">
+          <div className="absolute inset-0 opacity-20">
+            <img
+              src="/flow/about-hero-bg.png"
+              alt="About Us Background"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.src = "/flow/big-globe.png";
+              }}
+            />
+          </div>
+          <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -270,40 +281,10 @@ const AboutPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-600/20 to-cyan-600/20">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 2 }}
-            >
-              <h2 className="text-4xl font-bold text-white mb-6">
-                Learn more about Flow and the impact it can have on you and your organization
-              </h2>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/demo">
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-4 text-lg"
-                  >
-                    Schedule a Demo
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-                <a href="https://a.flow.gl/" target="_blank" rel="noopener noreferrer">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="border-2 border-emerald-400 text-emerald-400 px-8 py-4 text-lg hover:bg-emerald-400 hover:text-white transition-all"
-                  >
-                    Live Demo
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+        <CTASection 
+          title="Learn More About Flow"
+          subtitle="Discover the impact Flow Immersive can have on you and your organization. Transform your data into immersive experiences that drive better decisions."
+        />
 
         <Footer />
       </div>

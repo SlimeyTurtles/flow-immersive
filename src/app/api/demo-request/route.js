@@ -13,6 +13,18 @@ export async function POST(request) {
       );
     }
 
+    // Prepare data for Google Sheets and email
+    const timestamp = new Date().toISOString();
+    const submissionData = {
+      timestamp,
+      email,
+      firstName,
+      lastName,
+      company,
+      useCase: useCase === 'Other (please specify)' ? otherUseCase : useCase,
+      details: details || 'No additional details provided.'
+    };
+
     // Create email content
     const emailContent = `
 New Demo Request from Flow Immersive Website
@@ -22,43 +34,75 @@ Contact Information:
 - Email: ${email}
 - Company: ${company}
 
-Use Case: ${useCase}
-${useCase === 'Other (please specify)' && otherUseCase ? `Other Use Case: ${otherUseCase}` : ''}
+Use Case: ${submissionData.useCase}
 
 Additional Details:
-${details || 'No additional details provided.'}
+${submissionData.details}
+
+Timestamp: ${timestamp}
 
 ---
 Sent from Flow Immersive Demo Request Form
     `.trim();
 
-    // For now, we'll log the request
-    // In production, you would integrate with an email service like:
-    // - Nodemailer with SMTP
-    // - SendGrid
-    // - AWS SES
-    // - Resend
     console.log('Demo request received:', {
-      email,
-      firstName,
-      lastName,
-      company,
-      useCase,
-      otherUseCase,
-      details,
-      emailContent,
-      timestamp: new Date().toISOString(),
-      recipient: 'avinhahuynh@gmail.com'
+      ...submissionData,
+      recipient: 'info@flow.gl'
     });
 
-    // TODO: Implement actual email sending
-    // Example with a hypothetical email service:
+    // TODO: Implement Google Sheets integration
+    // You'll need to add googleapis package: npm install googleapis
+    // And set up service account credentials
     /*
-    await emailService.send({
-      to: 'avinhahuynh@gmail.com',
+    const { google } = require('googleapis');
+    const sheets = google.sheets('v4');
+    
+    const auth = new google.auth.GoogleAuth({
+      keyFile: 'path-to-service-account-key.json',
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+
+    await sheets.spreadsheets.values.append({
+      auth,
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Sheet1!A:G',
+      valueInputOption: 'USER_ENTERED',
+      resource: {
+        values: [[
+          submissionData.timestamp,
+          submissionData.firstName,
+          submissionData.lastName,
+          submissionData.email,
+          submissionData.company,
+          submissionData.useCase,
+          submissionData.details
+        ]],
+      },
+    });
+    */
+
+    // TODO: Implement email sending to info@flow.gl
+    // You'll need to add nodemailer or similar: npm install nodemailer
+    /*
+    const nodemailer = require('nodemailer');
+    
+    const transporter = nodemailer.createTransporter({
+      // Configure your email service
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM,
+      to: 'info@flow.gl',
       subject: `Demo Request from ${firstName} ${lastName} - ${company}`,
       text: emailContent,
-      html: emailContent.replace(/\n/g, '<br>')
+      html: emailContent.replace(/\n/g, '<br>'),
     });
     */
 

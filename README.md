@@ -1,93 +1,120 @@
-# Web Development Final Project - *Flow Immersive Website*
+# Flow Immersive
 
-Submitted by: **Avinh Huynh**
+**See your data clearly** - Transform complex data into immersive 3D visualizations for better decision-making using AR smart glasses or any web browser.
 
-This web app: **Website for a startup I am interning at that I made and it has a blog that fulfills the requirements**
+![Flow Logo](public/flow-logo-400x180.png)
 
-Time spent: **15** hours spent in total
+## About Flow Immersive
 
-## Required Features
+Flow Immersive is an XR/AI company specializing in 3D data visualizations and augmented reality experiences. Our mission is to transform complex data into dynamic, multi-dimensional narratives across AR, VR, and traditional flat screens, enabling organizations to make faster, more confident decisions through immersive data experiences.
 
-The following **required** functionality is completed:
+### Our Vision
 
+Inspired by science fiction interfaces like Iron Man's holographic data manipulation, Flow Immersive aims to create a "global data mind's eye" where data-driven thinking becomes second nature through the coming wave of AR smart glasses.
 
-- [x] **Web app includes a create form that allows the user to create posts**
-  - Form requires users to add a post title
-  - Forms should have the *option* for users to add: 
-    - additional textual content
-    - an image added as an external image URL
-- [x] **Web app includes a home feed displaying previously created posts**
-  - Web app must include home feed displaying previously created posts
-  - By default, each post on the posts feed should show only the post's:
-    - creation time
-    - title 
-    - upvotes count
-  - Clicking on a post should direct the user to a new page for the selected post
-- [x] **Users can view posts in different ways**
-  - Users can sort posts by either:
-    -  creation time
-    -  upvotes count
-  - Users can search for posts by title
-- [x] **Users can interact with each post in different ways**
-  - The app includes a separate post page for each created post when clicked, where any additional information is shown, including:
-    - content
-    - image
-    - comments
-  - Users can leave comments underneath a post on the post page
-  - Each post includes an upvote button on the post page. 
-    - Each click increases the post's upvotes count by one
-    - Users can upvote any post any number of times
+## Key Features
 
-- [x] **A post that a user previously created can be edited or deleted from its post pages**
-  - After a user creates a new post, they can go back and edit the post
-  - A previously created post can be deleted from its post page
+- **> AI-Powered Insights**: Speech-driven data interactions with natural language queries and voice commands
+- **=S AR/VR Support**: Optimized for AR glasses, XR headsets, and web browsers
+- **=e Multi-User Collaboration**: Real-time shared visualizations for better team decision-making
+- **=Ê 3D Data Visualization**: Transform complex datasets into intuitive spatial experiences
+- **< Cross-Platform**: Works seamlessly across devices and platforms
 
-The following **optional** feastures are implemented:
+## Products & Solutions
 
+### AR Data Room
+An AI-enhanced collaborative workspace that combines best-in-class AR hardware with 3D data visualization software, transforming the effectiveness of data-driven meetings.
 
-- [x] Web app implements pseudo-authentication
-  - Users can only edit and delete posts or delete comments by entering the secret key, which is set by the user during post creation
-  - **or** upon launching the web app, the user is assigned a random user ID. It will be associated with all posts and comments that they make and displayed on them
-  - For both options, only the original user author of a post can update or delete it
-- [ ] Users can repost a previous post by referencing its post ID. On the post page of the new post
-  - Users can repost a previous post by referencing its post ID
-  - On the post page of the new post, the referenced post is displayed and linked, creating a thread
-- [ ] Users can customize the interface
-  - e.g., selecting the color scheme or showing the content and image of each post on the home feed
-- [x] Users can add more characterics to their posts
-  - Users can share and view web videos
-  - Users can set flags such as "Question" or "Opinion" while creating a post
-  - Users can filter posts by flags on the home feed
-  - Users can upload images directly from their local machine as an image file
-- [x] Web app displays a loading animation whenever data is being fetched
+### FlowAI
+Intelligent data interaction powered by advanced AI, enabling natural language queries, voice interaction, and smart pattern recognition in your data visualizations.
 
-The following **additional** features are implemented:
+### Industry Solutions
+- **Financial Services**: Portfolio analysis, market trends, client presentations
+- **Consulting**: M&A analysis, project management, scenario planning
+- **Healthcare**: Clinical trial visualization, pharmaceutical R&D collaboration
+- **Public Policy**: Climate impact presentations, policy simulations
+- **Education**: Interactive learning modules, STEM demonstrations
 
-* [x] Fully realized admin dashboard
-* [x] Next.js, shadcn, framer-motion, lucide
+## Technology Stack
 
-## Video Walkthrough
+This project is built with:
 
-Here's a walkthrough of implemented user stories:
+- **Next.js 15** - React framework with App Router
+- **React 19** - User interface library
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Framer Motion** - Animation library
+- **Supabase** - Backend as a service
+- **Lucide React** - Icon library
 
-![demo gif](https://github.com/SlimeyTurtles/flow-immersive/blob/main/demo.gif?raw=true)
+## Getting Started
 
-## Notes
+### Prerequisites
 
-I made a completely different project for codepath final that was a stateful game website, but I didn't realize the final had to be a blog -- someone told me we just needed to make a crud app -- so I backpeddled to submitting this instead. I made this for my internship at a startup.
+- Node.js 18+ 
+- npm or pnpm package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-org/flow-immersive.git
+cd flow-immersive
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+pnpm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+# or
+pnpm dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+### Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## Strategic Partnerships
+
+Flow Immersive collaborates with industry leaders to deliver cutting-edge AR solutions:
+
+- **Meta**: Multi-user AR experiences on Meta Quest devices
+- **Qualcomm**: AR processing and mobile platform integration  
+- **HTC**: Enterprise-grade VR hardware solutions
+- **Magic Leap**: Next-generation spatial computing experiences
+
+## Live Demos
+
+Experience Flow Immersive in action:
+- [Interactive Demo Platform](https://a.flow.gl/)
+- [Stock Portfolio Analysis](https://a.flow.gl/flow/m3eo4iay/display)
+- [Temperature Anomalies](https://a.flow.gl/flow/7mp5g1/display)
+- [Texas Power Outage Analysis](https://a.flow.gl/flow/yuqa8d/display)
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
 ## License
 
-    Copyright 2025 Avinh Huynh
+This project is licensed under the [MIT License](LICENSE).
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+## Contact
 
-        http://www.apache.org/licenses/LICENSE-2.0
+- Website: [Flow Immersive](https://www.flowimmersive.com)
+- Demo Requests: [Schedule a Demo](https://www.flowimmersive.com/demo)
+- Email: info@flowimmersive.com
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+---
+
+**Flow Immersive** - Transforming decision-making through immersive data visualization

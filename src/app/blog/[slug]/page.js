@@ -8,8 +8,11 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import { supabase } from '@/lib/supabase';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import CTASection from '@/components/CTASection';
 import { Calendar, Clock, ArrowLeft, Share2, User } from 'lucide-react';
 
 const fadeInUp = {
@@ -71,6 +74,31 @@ export default function BlogPostPage() {
     const words = content.split(' ').length;
     const minutes = Math.ceil(words / wordsPerMinute);
     return `${minutes} min read`;
+  };
+
+  const cleanMarkdown = (text) => {
+    if (!text) return '';
+    
+    return text
+      // Remove images ![alt](url)
+      .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
+      // Remove links [text](url) but keep the text
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      // Remove headers ### ## #
+      .replace(/^#{1,6}\s+/gm, '')
+      // Remove bold **text** and __text__
+      .replace(/(\*\*|__)(.*?)\1/g, '$2')
+      // Remove italic *text* and _text_
+      .replace(/(\*|_)(.*?)\1/g, '$2')
+      // Remove code blocks ```
+      .replace(/```[\s\S]*?```/g, '')
+      // Remove inline code `text`
+      .replace(/`([^`]+)`/g, '$1')
+      // Remove HTML tags
+      .replace(/<[^>]*>/g, '')
+      // Clean up extra whitespace
+      .replace(/\s+/g, ' ')
+      .trim();
   };
 
   const handleShare = async () => {
@@ -142,15 +170,7 @@ export default function BlogPostPage() {
   if (notFound) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950">
-        <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl border-b border-blue-500/20">
-          <div className="max-w-7xl mx-auto px-6 py-4">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="text-2xl font-bold text-white hover:scale-105 transition-transform">
-                Flow <span className="text-blue-400">Immersive</span>
-              </Link>
-            </div>
-          </div>
-        </nav>
+        <Navbar />
         
         <div className="pt-32 px-6">
           <div className="max-w-4xl mx-auto text-center">
@@ -176,23 +196,7 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl border-b border-blue-500/20">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold text-white hover:scale-105 transition-transform">
-              Flow <span className="text-blue-400">Immersive</span>
-            </Link>
-            <div className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-300 hover:text-blue-400 transition-colors">Home</Link>
-              <Link href="/blog" className="text-blue-400">Blog</Link>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">About Us</a>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Resources</a>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">Help</a>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       <article className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
@@ -204,8 +208,7 @@ export default function BlogPostPage() {
           >
             <Link href="/blog">
               <Button 
-                variant="outline" 
-                className="border-slate-600 text-gray-300 hover:bg-slate-800"
+                className="bg-gradient-to-r from-slate-700 to-slate-600 hover:from-slate-600 hover:to-slate-500 text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-lg hover:scale-105 hover:shadow-slate-500/25 ring-1 ring-slate-500/30 transition-all duration-300"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Blog
@@ -240,7 +243,7 @@ export default function BlogPostPage() {
             
             {blog.excerpt && (
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                {blog.excerpt}
+                {cleanMarkdown(blog.excerpt)}
               </p>
             )}
 
@@ -268,9 +271,7 @@ export default function BlogPostPage() {
               
               <Button
                 onClick={handleShare}
-                variant="outline"
-                size="sm"
-                className="border-slate-600 text-gray-300 hover:bg-slate-800"
+                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-lg hover:scale-105 hover:shadow-emerald-500/25 ring-1 ring-emerald-500/30 transition-all duration-300"
               >
                 <Share2 className="w-4 h-4 mr-2" />
                 Share
@@ -357,82 +358,16 @@ export default function BlogPostPage() {
             </Card>
           </motion.div>
 
-          {/* Call to Action */}
-          <motion.div 
-            {...fadeInUp}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="mt-12"
-          >
-            <Card className="bg-gradient-to-r from-blue-900/30 to-indigo-900/30 border-blue-500/20">
-              <CardContent className="text-center py-12">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Ready to Transform Your Data?
-                </h3>
-                <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-                  Experience the power of immersive data visualization with Flow Immersive. 
-                  See how your data can drive better decisions.
-                </p>
-                <div className="flex gap-4 justify-center">
-                  <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
-                    Request Demo
-                  </Button>
-                  <Link href="/blog">
-                    <Button variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800">
-                      More Articles
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </article>
 
-      {/* Footer */}
-      <footer className="py-12 px-6 bg-slate-950 border-t border-blue-500/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <Link href="/" className="text-2xl font-bold text-white mb-4 block">
-                Flow <span className="text-blue-400">Immersive</span>
-              </Link>
-              <p className="text-gray-400">
-                Transforming data into immersive experiences for better decision making.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Products</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Flow Editor</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Flow AI</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">AR Data Room</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Meta Quest App</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Data Security</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Policies</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Contact Us</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2">
-                <li><Link href="/blog" className="text-blue-400 hover:text-blue-300 transition-colors">Blog</Link></li>
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Documentation</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Support</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">API</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-8 text-center">
-            <p className="text-gray-400">©2023 Flow Immersive, Inc.</p>
-          </div>
-        </div>
-      </footer>
+      {/* Call to Action */}
+      <CTASection 
+        title="Ready to Transform Your Data?"
+        subtitle="Experience the power of immersive data visualization with Flow Immersive. See how your data can drive better decisions."
+      />
+
+      <Footer />
     </div>
   );
 }

@@ -80,6 +80,31 @@ export default function BlogPage() {
     return `${minutes} min read`;
   };
 
+  const cleanMarkdown = (text) => {
+    if (!text) return '';
+    
+    return text
+      // Remove images ![alt](url)
+      .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
+      // Remove links [text](url) but keep the text
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      // Remove headers ### ## #
+      .replace(/^#{1,6}\s+/gm, '')
+      // Remove bold **text** and __text__
+      .replace(/(\*\*|__)(.*?)\1/g, '$2')
+      // Remove italic *text* and _text_
+      .replace(/(\*|_)(.*?)\1/g, '$2')
+      // Remove code blocks ```
+      .replace(/```[\s\S]*?```/g, '')
+      // Remove inline code `text`
+      .replace(/`([^`]+)`/g, '$1')
+      // Remove HTML tags
+      .replace(/<[^>]*>/g, '')
+      // Clean up extra whitespace
+      .replace(/\s+/g, ' ')
+      .trim();
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950">
       <Navbar />
@@ -197,7 +222,7 @@ export default function BlogPage() {
                               {blog.title}
                             </CardTitle>
                             <CardDescription className="text-gray-300 text-lg leading-relaxed line-clamp-3">
-                              {blog.excerpt}
+                              {cleanMarkdown(blog.excerpt)}
                             </CardDescription>
                           </CardHeader>
                           <CardContent className="p-0 mt-4">
