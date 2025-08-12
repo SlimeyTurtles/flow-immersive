@@ -304,7 +304,7 @@ export default function Home() {
                 <a href="https://a.flow.gl/" target="_blank" rel="noopener noreferrer">
                   <Button 
                     size="lg"
-                    className="bg-gradient-to-r from-slate-600 to-gray-600 hover:from-slate-700 hover:to-gray-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 hover:shadow-xl w-full sm:w-auto"
+                    className="bg-gray-700 hover:bg-gray-800 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 hover:shadow-xl w-full sm:w-auto"
                   >
                     <Play className="w-5 h-5 mr-2" />
                     Try Live Demo
