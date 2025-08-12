@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-slate-800 pt-8 text-center">
-          <p className="text-gray-400">©2023 Flow Immersive, Inc.</p>
+          <p className="text-gray-400">©2025 Flow Immersive, Inc.</p>
         </div>
       </div>
     </footer>

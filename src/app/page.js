@@ -12,9 +12,9 @@ import { Button } from "@/components/ui/button";
 import { Play, ArrowRight, Database, Eye, Users, Zap, LogIn, LogOut, Settings } from "lucide-react";
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 8 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: "easeOut" }
+  transition: { duration: 0.5, ease: "easeOut" }
 };
 
 const staggerContainer = {
@@ -79,7 +79,7 @@ const HeroCarousel = () => {
   }, [slides.length]);
 
   return (
-    <div className="relative w-full h-72 md:h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-500/20">
+    <div className="relative w-full h-60 md:h-80 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-500/20">
       {slides.map((slide, index) => (
         <motion.div
           key={index}
@@ -262,7 +262,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="px-6 relative min-h-screen">
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-30">
           <img
             src="/flow/big-globe.png"
             alt="Globe Background"
@@ -270,7 +270,7 @@ export default function Home() {
           />
         </div>
         <div className="max-w-7xl mx-auto relative z-10 flex items-center min-h-screen py-20">
-          <div className="grid lg:grid-cols-7 gap-12 items-center w-full">
+          <div className="grid lg:grid-cols-7 gap-8 items-center w-full">
             {/* Left Column - Text Content */}
             <div className="text-left lg:col-span-3">
               <motion.h1 
@@ -304,7 +304,7 @@ export default function Home() {
                 <a href="https://a.flow.gl/" target="_blank" rel="noopener noreferrer">
                   <Button 
                     size="lg"
-                    className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 hover:shadow-xl w-full sm:w-auto"
+                    className="bg-gradient-to-r from-slate-600 to-gray-600 hover:from-slate-700 hover:to-gray-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 hover:shadow-xl w-full sm:w-auto"
                   >
                     <Play className="w-5 h-5 mr-2" />
                     Try Live Demo
@@ -314,11 +314,11 @@ export default function Home() {
             </div>
 
             {/* Right Column - Carousel */}
-            <div className="relative lg:col-span-4">
+            <div className="relative lg:col-span-4 flex justify-center">
               <motion.div
                 {...fadeInUp}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="relative"
+                className="relative max-w-xl w-full"
               >
                 <HeroCarousel />
               </motion.div>
@@ -344,10 +344,9 @@ export default function Home() {
           <motion.div 
             {...fadeInUp}
             transition={{ delay: 0.4, duration: 0.8 }}
-            whileHover={glowOnHover}
           >
-            <Card className="bg-slate-900/50 border-blue-500/20 backdrop-blur-sm overflow-hidden">
-              <CardContent className="p-4 md:p-8">
+            <Card className="bg-slate-900/50 border-blue-500/20 backdrop-blur-sm overflow-hidden max-w-3xl mx-auto">
+              <CardContent className="p-6">
                 <div className="aspect-video rounded-2xl overflow-hidden">
                   <iframe
                     width="100%"
@@ -396,7 +395,7 @@ export default function Home() {
             className="grid md:grid-cols-2 gap-12 items-center"
           >
             <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-800/50 border-blue-500/20 h-full">
+              <Card className="bg-slate-800/50 border-slate-500/20 h-96">
                 <CardHeader>
                   <CardTitle className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                     <Zap className="w-8 h-8 text-blue-400" />
@@ -434,9 +433,8 @@ export default function Home() {
             
             <motion.div 
               variants={fadeInUp}
-              whileHover={scaleOnHover}
             >
-              <Card className="bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border-blue-500/20 h-96">
+              <Card className="bg-slate-800/50 border-slate-500/20 h-96">
                 <CardContent className="p-4 h-full">
                   <div className="w-full h-full rounded-xl overflow-hidden">
                     <img
@@ -473,7 +471,7 @@ export default function Home() {
               variants={fadeInUp}
               whileHover={scaleOnHover}
             >
-              <Card className="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 border-cyan-500/20 h-[28rem]">
+              <Card className="bg-slate-800/50 border-slate-500/20 h-96">
                 <CardContent className="p-2 h-full">
                   <div className="aspect-video w-full h-full rounded-xl overflow-hidden">
                     <iframe
@@ -492,7 +490,7 @@ export default function Home() {
             </motion.div>
             
             <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-800/50 border-cyan-500/20 h-full">
+              <Card className="bg-slate-800/50 border-slate-500/20 h-96">
                 <CardHeader>
                   <CardTitle className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                     <Eye className="w-8 h-8 text-cyan-400" />
@@ -543,10 +541,10 @@ export default function Home() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="grid md:grid-cols-2 gap-12 items-stretch"
           >
             <motion.div variants={fadeInUp}>
-              <Card className="bg-slate-800/50 border-emerald-500/20 h-full">
+              <Card className="bg-slate-800/50 border-slate-500/20 h-full">
                 <CardHeader>
                   <CardTitle className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                     <Users className="w-8 h-8 text-emerald-400" />
@@ -583,7 +581,7 @@ export default function Home() {
               variants={fadeInUp}
               whileHover={scaleOnHover}
             >
-              <Card className="bg-gradient-to-br from-emerald-900/30 to-blue-900/30 border-emerald-500/20 h-96">
+              <Card className="bg-slate-800/50 border-slate-500/20 h-96">
                 <CardContent className="p-4 h-full">
                   <div className="w-full h-full rounded-xl overflow-hidden">
                     <img
@@ -732,7 +730,7 @@ export default function Home() {
               }
             ].map((platform, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className={`bg-slate-800/50 ${platform.border} text-center group hover:${platform.border.replace('/20', '/40')} transition-colors`}>
+                <Card className={`bg-slate-800/50 ${platform.border} text-center group hover:${platform.border.replace('/20', '/40')} transition-colors h-full`}>
                   <CardContent className="p-8">
                     <motion.div 
                       whileHover={scaleOnHover}

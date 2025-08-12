@@ -35,10 +35,16 @@ const BlogManager = () => {
     }, 3000);
     
     try {
+      console.log('Starting blog fetch...');
+      const startTime = Date.now();
+      
       // Add timeout protection (30 seconds)
       const timeoutPromise = new Promise((_, reject) => 
         setTimeout(() => reject(new Error('Connection timed out. This might be a network issue. Please check your connection and try again.')), 30000)
       );
+      
+      // First try a simple connection test
+      const testQuery = supabase.from('blogs').select('count', { count: 'exact', head: true });
       
       const supabasePromise = supabase
         .from('blogs')
@@ -47,16 +53,39 @@ const BlogManager = () => {
       
       const result = await Promise.race([supabasePromise, timeoutPromise]);
       const { data, error } = result;
+      
+      const endTime = Date.now();
+      console.log(`Blog fetch completed in ${endTime - startTime}ms`);
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error details:', error);
+        throw error;
+      }
+      
+      console.log(`Successfully fetched ${data?.length || 0} blogs`);
       setBlogs(data || []);
       clearTimeout(slowWarningTimer);
       setSlowWarning(false);
     } catch (error) {
-      console.error('Error fetching blogs:', error);
+      console.error('Error fetching blogs:', {
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+        code: error.code
+      });
       clearTimeout(slowWarningTimer);
       setSlowWarning(false);
-      setError(error.message || 'Failed to load blog posts. Please try again.');
+      
+      // More specific error messages
+      if (error.code === '42P01') {
+        setError('Database table not found. Please check your Supabase setup.');
+      } else if (error.code === 'PGRST116') {
+        setError('Database connection issue. Please check your Supabase configuration.');
+      } else if (error.message?.includes('timeout')) {
+        setError('Connection timed out. Your Supabase database might be slow or unreachable.');
+      } else {
+        setError(error.message || 'Failed to load blog posts. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
