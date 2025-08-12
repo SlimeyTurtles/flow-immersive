@@ -1,0 +1,25 @@
+{
+  "name": "Flow Immersive - AR Data Visualization",
+  "short_name": "Flow Immersive",
+  "description": "Transform complex data into immersive AR/VR experiences for superior decision-making",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e40af",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/flow-logo-400x180.png",
+      "sizes": "400x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en-US"
+}

@@ -166,7 +166,7 @@ const BlogManager = () => {
                 <Button
                   variant="outline"
                   onClick={() => setCurrentView('list')}
-                  className="border-blue-500 text-blue-400 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+                  className="bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border-blue-500 text-blue-400 hover:from-blue-600 hover:to-cyan-600 hover:text-white hover:border-blue-600 transition-all duration-300"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to Dashboard
@@ -174,7 +174,7 @@ const BlogManager = () => {
                 <Link href="/">
                   <Button
                     variant="outline"
-                    className="border-cyan-500 text-cyan-400 hover:bg-cyan-600 hover:text-white hover:border-cyan-600"
+                    className="bg-gradient-to-r from-cyan-600/10 to-blue-600/10 border-cyan-500 text-cyan-400 hover:from-cyan-600 hover:to-blue-600 hover:text-white hover:border-cyan-600 transition-all duration-300"
                   >
                     Back to Site
                   </Button>
@@ -182,7 +182,7 @@ const BlogManager = () => {
                 <Button
                   variant="outline"
                   onClick={signOut}
-                  className="border-red-500 text-red-400 hover:bg-red-600 hover:text-white hover:border-red-600"
+                  className="bg-gradient-to-r from-red-600/10 to-red-500/10 border-red-500 text-red-400 hover:from-red-600 hover:to-red-500 hover:text-white hover:border-red-600 transition-all duration-300"
                 >
                   <LogOut className="w-4 h-4 mr-2" />
                   Sign Out
@@ -218,7 +218,7 @@ const BlogManager = () => {
                     setCurrentView('list');
                     setEditingBlog(null);
                   }}
-                  className="border-slate-600 text-gray-300 hover:bg-slate-800"
+                  className="bg-gradient-to-r from-slate-600/10 to-slate-700/10 border-slate-600 text-gray-300 hover:from-slate-600 hover:to-slate-700 hover:text-white transition-all duration-300"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to Dashboard
@@ -226,7 +226,7 @@ const BlogManager = () => {
                 <Link href="/">
                   <Button
                     variant="outline"
-                    className="border-cyan-500 text-cyan-400 hover:bg-cyan-600 hover:text-white hover:border-cyan-600"
+                    className="bg-gradient-to-r from-cyan-600/10 to-blue-600/10 border-cyan-500 text-cyan-400 hover:from-cyan-600 hover:to-blue-600 hover:text-white hover:border-cyan-600 transition-all duration-300"
                   >
                     Back to Site
                   </Button>
@@ -234,7 +234,7 @@ const BlogManager = () => {
                 <Button
                   variant="outline"
                   onClick={signOut}
-                  className="border-red-500 text-red-400 hover:bg-red-600 hover:text-white hover:border-red-600"
+                  className="bg-gradient-to-r from-red-600/10 to-red-500/10 border-red-500 text-red-400 hover:from-red-600 hover:to-red-500 hover:text-white hover:border-red-600 transition-all duration-300"
                 >
                   <LogOut className="w-4 h-4 mr-2" />
                   Sign Out
@@ -272,7 +272,7 @@ const BlogManager = () => {
               <Link href="/">
                 <Button
                   variant="outline"
-                  className="border-slate-600 text-gray-300 hover:bg-slate-800"
+                  className="bg-gradient-to-r from-slate-600/10 to-slate-700/10 border-slate-600 text-gray-300 hover:from-slate-600 hover:to-slate-700 hover:text-white transition-all duration-300"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to Site
@@ -300,7 +300,7 @@ const BlogManager = () => {
             </div>
             <Button
               onClick={() => setCurrentView('create')}
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/25"
             >
               <Plus className="w-4 h-4 mr-2" />
               New Post
@@ -326,14 +326,14 @@ const BlogManager = () => {
           <div className="flex gap-3 justify-center">
             <Button 
               onClick={() => fetchBlogs()}
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/25"
             >
               Try Again
             </Button>
             <Button 
               onClick={() => window.location.reload()}
               variant="outline"
-              className="border-slate-600 text-gray-300 hover:bg-slate-800"
+              className="bg-gradient-to-r from-slate-600/10 to-slate-700/10 border-slate-600 text-gray-300 hover:from-slate-600 hover:to-slate-700 hover:text-white transition-all duration-300"
             >
               Refresh Page
             </Button>
@@ -346,7 +346,7 @@ const BlogManager = () => {
             <p className="text-gray-400 mb-6">Create your first blog post to get started</p>
             <Button
               onClick={() => setCurrentView('create')}
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/25"
             >
               <Plus className="w-4 h-4 mr-2" />
               Create First Post
@@ -410,7 +410,7 @@ const BlogManager = () => {
                         setEditingBlog(blog);
                         setCurrentView('edit');
                       }}
-                      className="border-blue-500 text-blue-400 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+                      className="bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border-blue-500 text-blue-400 hover:from-blue-600 hover:to-cyan-600 hover:text-white hover:border-blue-600 transition-all duration-300"
                     >
                       <Edit className="w-4 h-4 mr-2" />
                       Edit
@@ -420,8 +420,8 @@ const BlogManager = () => {
                       size="sm"
                       onClick={() => handleTogglePublished(blog)}
                       className={blog.published ? 
-                        "border-orange-500 text-orange-400 hover:bg-orange-600 hover:text-white hover:border-orange-600" :
-                        "border-emerald-500 text-emerald-400 hover:bg-emerald-600 hover:text-white hover:border-emerald-600"
+                        "bg-gradient-to-r from-orange-600/10 to-red-600/10 border-orange-500 text-orange-400 hover:from-orange-600 hover:to-red-600 hover:text-white hover:border-orange-600 transition-all duration-300" :
+                        "bg-gradient-to-r from-emerald-600/10 to-green-600/10 border-emerald-500 text-emerald-400 hover:from-emerald-600 hover:to-green-600 hover:text-white hover:border-emerald-600 transition-all duration-300"
                       }
                     >
                       <Eye className="w-4 h-4 mr-2" />
@@ -431,7 +431,7 @@ const BlogManager = () => {
                       variant="outline"
                       size="sm"
                       onClick={() => window.open(`/blog/${blog.slug}`, '_blank')}
-                      className="border-cyan-500 text-cyan-400 hover:bg-cyan-600 hover:text-white hover:border-cyan-600"
+                      className="bg-gradient-to-r from-cyan-600/10 to-blue-600/10 border-cyan-500 text-cyan-400 hover:from-cyan-600 hover:to-blue-600 hover:text-white hover:border-cyan-600 transition-all duration-300"
                     >
                       View
                     </Button>
@@ -439,7 +439,7 @@ const BlogManager = () => {
                       variant="outline"
                       size="sm"
                       onClick={() => handleDeleteBlog(blog.id)}
-                      className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white ml-auto"
+                      className="bg-gradient-to-r from-red-600/10 to-red-500/10 border-red-600 text-red-400 hover:from-red-600 hover:to-red-500 hover:text-white hover:border-red-600 transition-all duration-300 ml-auto"
                     >
                       <Trash2 className="w-4 h-4 mr-2" />
                       Delete

@@ -217,7 +217,7 @@ const MarkdownEditor = ({ initialContent = '', initialTitle = '', onSave, onCanc
           <Button
             variant="outline"
             onClick={onCancel}
-            className="border-slate-600 text-gray-300 hover:bg-slate-800"
+            className="bg-gradient-to-r from-slate-600/10 to-slate-700/10 border-slate-600 text-gray-300 hover:from-slate-600 hover:to-slate-700 hover:text-white transition-all duration-300"
           >
             Cancel
           </Button>
@@ -225,7 +225,7 @@ const MarkdownEditor = ({ initialContent = '', initialTitle = '', onSave, onCanc
             onClick={() => handleSave(false)}
             disabled={loading || !title.trim() || !content.trim()}
             variant="outline"
-            className="border-blue-500 text-blue-400 hover:bg-blue-500/10 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-gradient-to-r from-blue-600/10 to-cyan-600/10 border-blue-500 text-blue-400 hover:from-blue-600 hover:to-cyan-600 hover:text-white hover:border-blue-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <div className="flex items-center">
@@ -237,7 +237,7 @@ const MarkdownEditor = ({ initialContent = '', initialTitle = '', onSave, onCanc
           <Button
             onClick={() => handleSave(true)}
             disabled={loading || !title.trim() || !content.trim()}
-            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
           >
             {loading ? (
               <div className="flex items-center">
@@ -301,7 +301,7 @@ const MarkdownEditor = ({ initialContent = '', initialTitle = '', onSave, onCanc
                   variant="outline"
                   onClick={() => document.getElementById('featured-image-upload').click()}
                   disabled={uploadingImage}
-                  className="border-slate-600 text-gray-300 hover:bg-slate-800 disabled:opacity-50"
+                  className="bg-gradient-to-r from-slate-600/10 to-slate-700/10 border-slate-600 text-gray-300 hover:from-slate-600 hover:to-slate-700 hover:text-white transition-all duration-300 disabled:opacity-50"
                 >
                   {uploadingImage ? (
                     <div className="flex items-center">
@@ -354,7 +354,7 @@ const MarkdownEditor = ({ initialContent = '', initialTitle = '', onSave, onCanc
                   size="sm"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={uploadingImage}
-                  className="border-slate-600 text-gray-300 hover:bg-slate-800 disabled:opacity-50"
+                  className="bg-gradient-to-r from-slate-600/10 to-slate-700/10 border-slate-600 text-gray-300 hover:from-slate-600 hover:to-slate-700 hover:text-white transition-all duration-300 disabled:opacity-50"
                 >
                   {uploadingImage ? (
                     <div className="flex items-center">
