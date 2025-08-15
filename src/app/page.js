@@ -278,7 +278,7 @@ export default function Home() {
                 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
               >
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400">
-                  See your data clearly
+                  See your<br/>data clearly
                 </span>
               </motion.h1>
               <motion.p 
@@ -622,7 +622,7 @@ export default function Home() {
                 title: "Data Integration",
                 description: "Upload CSV or connect your existing data sources securely to Flow Immersive with data push integration.",
                 gradient: "from-blue-600 to-cyan-600",
-                iconImage: "/flow/icons/data-integration.svg",
+                iconImage: "/flow/icon_manage.png",
                 iconFallback: Database
               },
               {
@@ -630,7 +630,7 @@ export default function Home() {
                 title: "Arrange Data",
                 description: "Design your presentation and define narrative steps using the no-code Flow Editor.",
                 gradient: "from-cyan-600 to-indigo-600",
-                iconImage: "/flow/icons/arrange-data.svg",
+                iconImage: "/flow/icon_edit.png",
                 iconFallback: Eye
               },
               {
@@ -638,7 +638,7 @@ export default function Home() {
                 title: "XR Visualization", 
                 description: "Optimized for XR devices and web browsers, experience your data in a whole new light.",
                 gradient: "from-indigo-600 to-purple-600",
-                iconImage: "/flow/icons/xr-visualization.svg",
+                iconImage: "/flow/icon_visualize2.png",
                 iconFallback: Zap
               },
               {
@@ -646,7 +646,7 @@ export default function Home() {
                 title: "Collaborate",
                 description: "Invite team members to join shared AR sessions to analyze scenarios and make decisions together.",
                 gradient: "from-purple-600 to-pink-600",
-                iconImage: "/flow/icons/collaborate.svg",
+                iconImage: "/flow/icon_share.png",
                 iconFallback: Users
               }
             ].map((item, index) => (
@@ -655,18 +655,18 @@ export default function Home() {
                   <CardContent className="p-6">
                     <motion.div 
                       whileHover={scaleOnHover}
-                      className={`bg-gradient-to-br ${item.gradient} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6`}
+                      className={`bg-gradient-to-br ${item.gradient} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 overflow-hidden`}
                     >
                       <img
                         src={item.iconImage}
                         alt={`${item.title} icon`}
-                        className="w-8 h-8 text-white"
+                        className="w-full h-full object-cover"
                         onError={(e) => {
                           e.target.style.display = 'none';
                           e.target.nextElementSibling.style.display = 'block';
                         }}
                       />
-                      <item.iconFallback className="w-8 h-8 text-white hidden" />
+                      <item.iconFallback className="w-12 h-12 text-white hidden" />
                     </motion.div>
                     <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
                     <p className="text-gray-300 text-sm leading-relaxed">
@@ -791,7 +791,7 @@ export default function Home() {
               <motion.div key={index} variants={fadeInUp}>
                 <button
                   onClick={() => setActiveIndustry(industry)}
-                  className={`px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer hover:scale-105 shadow-lg border ${
+                  className={`px-10 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer hover:scale-105 shadow-lg border ${
                     activeIndustry === industry 
                       ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-cyan-500/25 ring-2 ring-cyan-400/40 border-cyan-400" 
                       : "bg-slate-700 text-gray-300 hover:bg-slate-600 hover:text-white hover:shadow-blue-500/20 border-slate-600 hover:border-slate-500"

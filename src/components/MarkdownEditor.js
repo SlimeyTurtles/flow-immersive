@@ -264,6 +264,11 @@ const MarkdownEditor = ({ initialContent = '', initialTitle = '', onSave, onCanc
                 placeholder="Enter blog title..."
                 className="bg-slate-800 border-slate-700 text-white placeholder-gray-400"
               />
+              {title && (
+                <p className="text-sm text-gray-400">
+                  URL: /blog/<span className="text-blue-400">{generateSlug(title)}</span>
+                </p>
+              )}
             </div>
 
             <div className="space-y-2">

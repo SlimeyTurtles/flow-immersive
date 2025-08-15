@@ -310,7 +310,7 @@ const BlogManager = () => {
               <Button
                 variant="outline"
                 onClick={signOut}
-                className="border-slate-600 text-gray-300 hover:bg-slate-800"
+                className="bg-gradient-to-r from-red-600/10 to-red-500/10 border-red-500 text-red-400 hover:from-red-600 hover:to-red-500 hover:text-white hover:border-red-600 transition-all duration-300"
               >
                 <LogOut className="w-4 h-4 mr-2" />
                 Sign Out
@@ -459,8 +459,16 @@ const BlogManager = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => window.open(`/blog/${blog.slug}`, '_blank')}
-                      className="bg-gradient-to-r from-cyan-600/10 to-blue-600/10 border-cyan-500 text-cyan-400 hover:from-cyan-600 hover:to-blue-600 hover:text-white hover:border-cyan-600 transition-all duration-300"
+                      onClick={() => {
+                        if (!blog.slug) {
+                          alert('This blog post does not have a valid URL slug. Please edit the post to add one.');
+                          return;
+                        }
+                        const blogUrl = `/blog/${encodeURIComponent(blog.slug)}`;
+                        window.open(blogUrl, '_blank');
+                      }}
+                      disabled={!blog.slug}
+                      className="bg-gradient-to-r from-cyan-600/10 to-blue-600/10 border-cyan-500 text-cyan-400 hover:from-cyan-600 hover:to-blue-600 hover:text-white hover:border-cyan-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       View
                     </Button>

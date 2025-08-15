@@ -25,11 +25,12 @@ const Footer = () => {
         </div>
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-white font-semibold mb-4">Products</h3>
+            <h3 className="text-white font-semibold mb-4">Features</h3>
             <ul className="space-y-2 text-gray-400">
               <li><Link href="/flow-editor" className="hover:text-blue-400 transition-colors">Flow Editor</Link></li>
-              <li><Link href="/flowai" className="hover:text-blue-400 transition-colors">FlowAI</Link></li>
+              <li><Link href="/flowai" className="hover:text-blue-400 transition-colors">Flow AI</Link></li>
               <li><Link href="/ar-data-room" className="hover:text-blue-400 transition-colors">AR Data Room</Link></li>
+              <li><Link href="/htc-vive-app" className="hover:text-blue-400 transition-colors">HTC Vive App</Link></li>
               <li><Link href="/meta-quest-app" className="hover:text-blue-400 transition-colors">Meta Quest App</Link></li>
             </ul>
           </div>

@@ -73,7 +73,7 @@ const FlowAIPage = () => {
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400">
-                  FlowAI
+                  Flow AI
                 </span>
               </h1>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -84,46 +84,6 @@ const FlowAIPage = () => {
           </div>
         </section>
 
-        {/* Demo Video Section */}
-        <section className="py-20 px-6">
-          <div className="max-w-6xl mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-4xl font-bold text-white mb-4">
-                See FlowAI in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Action</span>
-              </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                Watch how FlowAI transforms complex data queries into intuitive conversations.
-              </p>
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Card className="bg-slate-900/50 border-blue-500/20 backdrop-blur-sm overflow-hidden">
-                <CardContent className="p-4 md:p-8">
-                  <div className="aspect-video rounded-2xl overflow-hidden">
-                    <iframe
-                      width="100%"
-                      height="100%"
-                      src="https://www.youtube.com/embed/placeholder-ai-demo"
-                      title="FlowAI Demo Video"
-                      style={{ border: 0 }}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      className="w-full h-full"
-                    ></iframe>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </section>
 
         {/* Features Grid */}
         <section className="py-20 bg-slate-900/30">
@@ -138,7 +98,7 @@ const FlowAIPage = () => {
                 Intelligent Features
               </h2>
               <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                FlowAI brings artificial intelligence to every aspect of your data visualization experience.
+                Flow AI brings artificial intelligence to every aspect of your data visualization experience.
               </p>
             </motion.div>
 
@@ -212,7 +172,7 @@ const FlowAIPage = () => {
               >
                 <img
                   src="/flow/ai.gif"
-                  alt="FlowAI in action"
+                  alt="Flow AI in action"
                   className="w-full h-full object-cover rounded-xl"
                 />
               </motion.div>
@@ -229,7 +189,7 @@ const FlowAIPage = () => {
               transition={{ duration: 0.8, delay: 1.8 }}
             >
               <h2 className="text-4xl font-bold text-white mb-6">
-                Ready to Experience FlowAI?
+                Ready to Experience Flow AI?
               </h2>
               <p className="text-xl text-gray-300 mb-8">
                 Discover how artificial intelligence can transform your data analysis workflow.

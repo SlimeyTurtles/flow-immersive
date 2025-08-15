@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl border-b border-blue-500/20">
@@ -46,35 +46,49 @@ const Navbar = () => {
             <div className="relative">
               <button
                 className="flex items-center text-gray-300 hover:text-blue-400 transition-colors"
-                onClick={() => setIsResourcesOpen(!isResourcesOpen)}
-                onMouseEnter={() => setIsResourcesOpen(true)}
+                onClick={() => setIsFeaturesOpen(!isFeaturesOpen)}
+                onMouseEnter={() => setIsFeaturesOpen(true)}
               >
-                Resources
+                Features
                 <ChevronDown className="w-4 h-4 ml-1" />
               </button>
-              {isResourcesOpen && (
+              {isFeaturesOpen && (
                 <div 
                   className="absolute top-full left-0 mt-2 w-48 bg-slate-900/95 backdrop-blur-xl border border-blue-500/20 rounded-lg shadow-xl z-50"
-                  onMouseLeave={() => setIsResourcesOpen(false)}
+                  onMouseLeave={() => setIsFeaturesOpen(false)}
                 >
+                  <Link
+                    href="/flow-editor"
+                    className="block px-4 py-3 text-gray-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors border-b border-slate-700/50"
+                    onClick={() => setIsFeaturesOpen(false)}
+                  >
+                    Flow Editor
+                  </Link>
+                  <Link
+                    href="/flowai"
+                    className="block px-4 py-3 text-gray-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors border-b border-slate-700/50"
+                    onClick={() => setIsFeaturesOpen(false)}
+                  >
+                    Flow AI
+                  </Link>
                   <Link
                     href="/ar-data-room"
                     className="block px-4 py-3 text-gray-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors border-b border-slate-700/50"
-                    onClick={() => setIsResourcesOpen(false)}
+                    onClick={() => setIsFeaturesOpen(false)}
                   >
                     AR Data Room
                   </Link>
                   <Link
                     href="/htc-vive-app"
                     className="block px-4 py-3 text-gray-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors border-b border-slate-700/50"
-                    onClick={() => setIsResourcesOpen(false)}
+                    onClick={() => setIsFeaturesOpen(false)}
                   >
                     HTC Vive App
                   </Link>
                   <Link
                     href="/meta-quest-app"
                     className="block px-4 py-3 text-gray-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors rounded-b-lg"
-                    onClick={() => setIsResourcesOpen(false)}
+                    onClick={() => setIsFeaturesOpen(false)}
                   >
                     Meta Quest App
                   </Link>
@@ -133,8 +147,22 @@ const Navbar = () => {
                 Blog
               </Link>
               <div className="space-y-2">
-                <div className="text-gray-300 font-medium">Resources</div>
+                <div className="text-gray-300 font-medium">Features</div>
                 <div className="pl-4 space-y-2">
+                  <Link 
+                    href="/flow-editor" 
+                    className="block text-gray-400 hover:text-blue-400 transition-colors text-sm"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Flow Editor
+                  </Link>
+                  <Link 
+                    href="/flowai" 
+                    className="block text-gray-400 hover:text-blue-400 transition-colors text-sm"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Flow AI
+                  </Link>
                   <Link 
                     href="/ar-data-room" 
                     className="block text-gray-400 hover:text-blue-400 transition-colors text-sm"
