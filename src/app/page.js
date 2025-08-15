@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play, ArrowRight, Database, Eye, Users, Zap, LogIn, LogOut, Settings } from "lucide-react";
+import { Play, ArrowRight, Database, Eye, Users, Zap, LogOut, Settings } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 8 },
@@ -221,6 +221,110 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950">
+      {/* Twitter Card Meta Tags for Validation */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@FlowImmersive" />
+      <meta name="twitter:creator" content="@FlowImmersive" />
+      <meta name="twitter:title" content="Flow Immersive - AR Data Visualization for Better Decisions" />
+      <meta name="twitter:description" content="Transform complex data into immersive AR/VR experiences. Visualize, analyze, and collaborate with data in 3D space for superior decision-making." />
+      <meta name="twitter:image" content="https://flowimmersive.vercel.app/flow/big-globe.png" />
+      <meta name="twitter:image:alt" content="Flow Immersive - AR Data Visualization Platform showing 3D globe visualization" />
+      
+      {/* Open Graph Meta Tags */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://flowimmersive.vercel.app" />
+      <meta property="og:title" content="Flow Immersive - AR Data Visualization for Better Decisions" />
+      <meta property="og:description" content="Transform complex data into immersive AR/VR experiences. Visualize, analyze, and collaborate with data in 3D space for superior decision-making." />
+      <meta property="og:image" content="https://flowimmersive.vercel.app/flow/big-globe.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Flow Immersive - AR Data Visualization Platform showing 3D globe visualization" />
+      <meta property="og:site_name" content="Flow Immersive" />
+      <meta property="og:locale" content="en_US" />
+      
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Flow Immersive",
+              "url": "https://flowimmersive.vercel.app",
+              "logo": "https://flowimmersive.vercel.app/flow-logo-400x180.png",
+              "description": "Transform complex data into immersive AR/VR experiences. Flow Immersive enables teams to visualize, analyze, and collaborate with data in 3D space for superior decision-making.",
+              "foundingDate": "2023",
+              "industry": "Data Visualization Technology",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "US"
+              },
+              "sameAs": [
+                "https://linkedin.com/company/flow-immersive",
+                "https://twitter.com/FlowImmersive"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "sales",
+                "url": "https://flowimmersive.vercel.app/demo"
+              },
+              "offers": [
+                {
+                  "@type": "Service",
+                  "name": "AR Data Visualization",
+                  "description": "Immersive 3D data visualization for AR smart glasses and VR headsets",
+                  "category": "Data Analytics",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "Flow Immersive"
+                  }
+                },
+                {
+                  "@type": "Service", 
+                  "name": "Flow Editor",
+                  "description": "No-code tool for creating immersive data stories",
+                  "category": "Data Visualization Tools",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "Flow Immersive"
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Flow AI",
+                  "description": "AI-powered data insights with natural language querying",
+                  "category": "Artificial Intelligence",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "Flow Immersive"
+                  }
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Flow Immersive",
+              "url": "https://flowimmersive.vercel.app",
+              "description": "Transform complex data into immersive AR/VR experiences for better decision-making",
+              "publisher": {
+                "@type": "Organization",
+                "name": "Flow Immersive"
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://flowimmersive.vercel.app/blog?search={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
+            }
+          ])
+        }}
+      />
+      
       <Navbar />
       
       {/* Admin floating menu for authenticated admins */}
@@ -261,11 +365,12 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="px-6 relative min-h-screen">
+      <main>
+        <section className="px-6 relative min-h-screen" aria-labelledby="hero-heading">
         <div className="absolute inset-0 opacity-30">
           <img
             src="/flow/big-globe.png"
-            alt="Globe Background"
+            alt="3D globe visualization representing global data connectivity and immersive analytics"
             className="w-full h-full object-cover"
           />
         </div>
@@ -274,6 +379,7 @@ export default function Home() {
             {/* Left Column - Text Content */}
             <div className="text-left lg:col-span-3">
               <motion.h1 
+                id="hero-heading"
                 {...fadeInUp}
                 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight"
               >
@@ -370,7 +476,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-10">
           <img
             src="/flow/graph.png"
-            alt="Graph Background"
+            alt="Abstract data visualization graph showing interconnected data points and analytics patterns"
             className="w-full h-full object-cover"
           />
         </div>
@@ -455,7 +561,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-10">
           <img
             src="/flow/heirarchy.png"
-            alt="Hierarchy Background"
+            alt="Hierarchical data structure visualization showing organizational data relationships"
             className="w-full h-full object-cover"
           />
         </div>
@@ -531,7 +637,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-10">
           <img
             src="/flow/globe.png"
-            alt="Globe Background"
+            alt="Global data network visualization representing worldwide collaborative analytics"
             className="w-full h-full object-cover"
           />
         </div>
@@ -685,7 +791,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-10">
           <img
             src="/flow/cone-graph.png"
-            alt="Cone Graph Background"
+            alt="3D cone graph visualization demonstrating multi-dimensional data analysis capabilities"
             className="w-full h-full object-cover"
           />
         </div>
@@ -863,6 +969,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <CTASection />
+      </main>
 
       {/* Footer */}
       <Footer />

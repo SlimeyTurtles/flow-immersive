@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL('https://flowimmersive.vercel.app'),
   title: "Flow Immersive - AR Data Visualization for Better Decisions",
   description: "Transform complex data into immersive AR/VR experiences. Flow Immersive enables teams to visualize, analyze, and collaborate with data in 3D space for superior decision-making across financial services, consulting, healthcare, and more.",
   keywords: [
@@ -35,6 +36,9 @@ export const metadata = {
   authors: [{ name: "Flow Immersive Team" }],
   creator: "Flow Immersive, Inc.",
   publisher: "Flow Immersive, Inc.",
+  alternates: {
+    canonical: 'https://flowimmersive.vercel.app',
+  },
   robots: {
     index: true,
     follow: true,
@@ -55,10 +59,11 @@ export const metadata = {
     description: "Transform complex data into immersive AR/VR experiences. Visualize, analyze, and collaborate with data in 3D space for superior decision-making.",
     images: [
       {
-        url: "/flow/og-image.png",
+        url: "/flow/big-globe.png",
         width: 1200,
         height: 630,
-        alt: "Flow Immersive - AR Data Visualization Platform",
+        alt: "Flow Immersive - AR Data Visualization Platform showing 3D globe visualization",
+        type: "image/png",
       },
     ],
   },
@@ -68,7 +73,7 @@ export const metadata = {
     creator: "@FlowImmersive",
     title: "Flow Immersive - AR Data Visualization for Better Decisions",
     description: "Transform complex data into immersive AR/VR experiences. Visualize, analyze, and collaborate with data in 3D space for superior decision-making.",
-    images: ["/flow/twitter-card.png"],
+    images: ["/flow/big-globe.png"],
   },
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#1e40af",
